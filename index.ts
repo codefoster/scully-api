@@ -54,6 +54,7 @@ socketServer.on("connection", function (socket) {
 app.use('/', express.static(__dirname + '/public'));
 
 app.get('/api/session', (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin","*");
     res.json(session);
 });
 
