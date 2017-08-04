@@ -1,8 +1,8 @@
 {
-  "name": "regatta-api",
+  "name": "scully-api",
   "version": "0.1.0",
-  "author": "Jeremy Foster <jeremy.foster@microsoft.com>",
-  "description": "API for the Regatta project",
+  "author": "Jeremy Foster <jeremy.foster@live.com>",
+  "description": "API for the Scully project",
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
@@ -12,7 +12,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/regatta-app/api.git"
+    "url": "git+https://github.com/codefoster/scully-api.git"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
