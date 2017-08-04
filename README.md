@@ -1,5 +1,5 @@
-# regatta-api
-This is the web API for the Regatta project.
+# Overview
+This is the web API for the Scully project.
 
 # Getting Started
 ```
