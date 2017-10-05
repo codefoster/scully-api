@@ -20,7 +20,7 @@ let server = http.Server(app);
 let socketServer = socketio.listen(server);
 
 socketServer.on("connection", function (socket) {
-    console.log(`connection establish (${socket.conn.id})`);
+    console.log(`connection established (${socket.conn.id})`);
     socket.on("message", d => {
         if (d.message == 'rower-checkin') {
             //add rower if they don't aready exist
@@ -92,7 +92,6 @@ app.delete('/api/session/rower/:name', (req, res) => {
     socketServer.send({ message: 'session-change', session: session });
     res.status(200).end();
 })
-
 
 //start the web server
 server.listen(port, function () {
