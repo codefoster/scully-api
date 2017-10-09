@@ -5,6 +5,7 @@ import * as config from 'config';
 import http = require('http');
 import * as _ from 'lodash';
 import session from './session';
+var cors = require('cors');
 
 //config
 var port = process.env.port || (config.has('port') ? config.get('port') : 8080);
@@ -14,7 +15,7 @@ let app = express();
 //middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use((req,res) => res.setHeader("Access-Control-Allow-Origin", "*"));
+app.use(cors());
 
 //setup socket.io
 let server = http.Server(app);
