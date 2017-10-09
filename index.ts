@@ -14,6 +14,7 @@ let app = express();
 //middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use((req,res) => res.setHeader("Access-Control-Allow-Origin", "*"));
 
 //setup socket.io
 let server = http.Server(app);
@@ -54,7 +55,6 @@ socketServer.on("connection", function (socket) {
 app.use('/', express.static(__dirname + '/public'));
 
 app.get('/api/session', (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin","*");
     res.json(session);
 });
 
