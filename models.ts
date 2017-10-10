@@ -2,7 +2,7 @@ export class Session {
     status: string = 'idle';
     maxID: number = 1;
     rowers: Rower[] = [];
-    distance: number = 150;
+    distance: number = 500;
 
     start() {
         this.status = 'active';
