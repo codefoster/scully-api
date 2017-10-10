@@ -60,16 +60,17 @@ app.get('/api/session', (req, res) => {
 });
 
 app.post('/api/session/start', (req, res) => {
+    session.rowers.forEach(r => r.distance = 0);
     session.start();
     socketServer.send({ message: 'session-change', session: session });
-    socketServer.send({ message: 'sessionstart' });
+    socketServer.send({ message: 'session-start', distance: session.distance });
     res.json(session);
 });
 
 app.post('/api/session/end', (req, res) => {
     session.end();
     socketServer.send({ message: 'session-change', session: session });
-    socketServer.send({ message: 'sessionend' });
+    socketServer.send({ message: 'session-end' });
     res.json(session);
 });
 
@@ -84,6 +85,13 @@ app.get('/api/session/rower/:name', (req, res) => {
 app.post('/api/session/rower/:name', (req, res) => {
     let r = { name: req.params.name };
     session.addRower(r);
+    socketServer.send({ message: 'session-change', session: session });
+    res.json(r);
+})
+
+app.put('/api/session/rower/:name/:distance', (req, res) => {
+    let r = _.find(session.rowers, { name: req.params.name });
+    if(r) r.distance = req.params.distance;
     socketServer.send({ message: 'session-change', session: session });
     res.json(r);
 })
